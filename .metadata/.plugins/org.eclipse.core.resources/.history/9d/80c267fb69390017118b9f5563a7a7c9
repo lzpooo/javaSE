@@ -1,0 +1,17 @@
+package com.DaDaCarhire;
+import java.util.*;
+public class CarHire {
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in=new Scanner(System.in);
+        System.out.println("欢迎使用哒哒租车系统！");
+        System.out.println("您是否要租车：1 是  0 否");
+        if(in.nextInt()== 1){
+        	System.out.println("您可租车类型及其价目表：");
+        	System.out.println();
+        }
+	}
+
+}
