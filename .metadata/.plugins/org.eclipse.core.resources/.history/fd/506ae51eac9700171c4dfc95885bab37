@@ -1,0 +1,93 @@
+package com.briup.main;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Test;
+
+import com.briup.util.BIDR;
+
+public class Test1 {
+	List<BIDR> bidrList = new ArrayList<BIDR>();
+	Map<String, BIDR> map = new HashMap<>();
+	String[] split = null;
+
+	/*
+	 * 测试是否解析出用户
+	 */
+	@Test
+	public void Test4() {
+		int count1 = 0;
+		try {
+			FileReader reader = new FileReader("src/com/briup/file/radwtmp");
+			BufferedReader br = new BufferedReader(reader);
+			String bs = null;
+			while ((bs = br.readLine()) != null) {
+				//System.out.println(bs);
+				split = bs.split("[|]");
+				/*for (String s : split) {
+					System.out.print("  " + s);
+				}*/
+				//System.out.println();
+				String loginName = split[0];// 登录名
+				String nasIp = split[1];// NAS_ip
+				String flag = split[2];// 七上八下
+				String time = split[3];// 时间
+				String IP = split[4];// IP
+					if (flag.equals("7")) {
+						BIDR bidr = new BIDR();
+						Timestamp timeLogin = new Timestamp(
+								Long.parseLong(time));
+						//System.out.println(timeLogin);
+						bidr.setAAA_login_name(loginName);
+						bidr.setNAS_ip(nasIp);
+						bidr.setLogin_date(timeLogin);
+						bidr.setLogin_ip(IP);
+						/*System.out.println(bidr.getAAA_login_name() + "  "
+								+ bidr.getLogin_ip() + "  " + bidr.getNAS_ip()
+								+ "  " + bidr.getLogin_date());*/
+						//System.out.println("===========================");
+						//if (!map.containsKey(IP)) {
+							map.put(IP, bidr);
+						//}
+					} else if (flag.equals("8")) {
+						BIDR bidr = map.get(IP);
+						//System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[[[");
+						//System.out.println(bidr.getAAA_login_name());
+						// map.remove(bidr);
+						Timestamp login_date = bidr.getLogin_date();
+						//System.out.println(login_date);
+						Timestamp timeLogout = new Timestamp(Long.valueOf(time));
+						// 获取上线时长
+						int time_deration = (int) (timeLogout.getTime() - login_date
+								.getTime());
+						bidr.setTime_deration(time_deration);
+						bidr.setLogout_date(timeLogout);
+						bidrList.add(bidr);
+						map.remove(bidr);
+					}
+				
+			}
+			for (BIDR d : bidrList) {
+				//System.out.println("++++++++++++++++++++++++++");
+				System.out.println(d.getAAA_login_name() + "  "
+						+ d.getLogin_ip() + "  " + d.getNAS_ip() + "  "
+						+ d.getTime_deration() + "  " + d.getLogin_date()
+						+ "  " + d.getLogout_date() + "  " + count1++);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	
+
+}

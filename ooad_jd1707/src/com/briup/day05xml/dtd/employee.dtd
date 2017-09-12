@@ -1,0 +1,11 @@
+<!ELEMENT employee (emplo+)>
+	<!ATTLIST emplo
+				id ID #REQUIRED
+				name CDATA #REQUIRED
+				age CDATA #FIXED "20"
+				depName (市场部|教学部|教学管理部) #REQUIRED
+				salary CDATA #IMPLIED
+				gender CDATA "male"
+				
+	
+	>

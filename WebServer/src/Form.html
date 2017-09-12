@@ -1,0 +1,52 @@
+<html>
+<style>
+
+</style>
+	<title>Form</title>
+<body>
+<link type="text/css" rel="stylesheet" href="main.css"/>
+	<center><h2>Form</h2></center>
+	<hr>
+	<form action="http://127.0.0.1:10086/index.html" method="post">
+		<div class="main">
+			<div class="left">
+				<ul>
+					<li><div class="inner">name:</div></li>
+					<li><div class="inner">password:</div></li>
+					<li><div class="inner">gender:</div></li>
+					<li><div class="inner">likes:</div></li>
+					<li><div class="inner">file:</div></li>
+					<li><div class="inner">province:</div></li>
+					<li><div class="inner"><input type="submit" value="submit" /></div></li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul>
+					<li><div class="inner2"><input type="text" name="name"></div></li>
+					<li><div class="inner2"><input type="password" name="passwd"></div></li>
+					<li>
+						<div class="inner2"><input type="radio" name="gender">male
+						<input type="radio" name="gender">female</div>
+					</li>
+					<li>
+						<div class="inner2"><input type="checkbox" name="swimming" class="likes" />swimming
+						<input type="checkbox" name="likes" />program
+						<input type="checkbox" name="likes" />sleep
+						<input type="checkbox" name="likes">play</div>
+					</li>
+					<li><div class="inner2"><input type="file" name="file" id="file" /></div></li>
+					<li><div class="inner2"><select>
+						<option>--Select--</option>
+						<option>Beijing</option>
+						<option>Shanghai</option>
+						</select></div>
+					</li>
+					<li><div class="inner2"><input type="reset" value="reset" /></div></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+	</form>	
+</body>
+</html>

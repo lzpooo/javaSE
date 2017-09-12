@@ -1,0 +1,66 @@
+package com.briup.mybatis.pojo;
+
+import java.util.Date;
+
+/**
+ * Student类
+ * 
+ * @author LZP
+ *
+ *         2017年9月6日
+ */
+public class Student {
+	private Integer stu_id;
+	private String name;
+	private String email;
+	private Date dob;
+
+	public Student(Integer stu_id, String name, String email, Date dob) {
+		this.stu_id = stu_id;
+		this.name = name;
+		this.email = email;
+		this.dob = dob;
+	}
+
+	public Student() {
+	}
+
+	public Integer getStu_id() {
+		return stu_id;
+	}
+
+	public void setStu_id(Integer stu_id) {
+		this.stu_id = stu_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [stu_id=" + stu_id + ", name=" + name + ", email="
+				+ email + ", dob=" + dob + "]";
+	}
+
+}

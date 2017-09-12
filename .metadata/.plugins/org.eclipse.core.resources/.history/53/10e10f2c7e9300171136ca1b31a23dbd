@@ -1,0 +1,5 @@
+package com.briup.mybatis.handler;
+
+public class PhoneTypeHandler {
+
+}

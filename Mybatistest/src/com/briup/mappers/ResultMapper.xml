@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.briup.mappers.StudentMapper是我们定义接口的全限定名字 这样就可以使用接口调用映射的SQL语句了 这个名字一定要和接口对应上-->
+<mapper 
+namespace="com.briup.mappers.ResultMapper">
+
+<resultMap type="Student" 
+id="StudentResult">
+<id property="studId" column="stud_id"/>
+<result property="name" column="name"/>
+<result property="email" column="email"/>
+<result property="dob" column="dob"/>
+<result property="phone" column="phone"/>
+</resultMap>
+
+<select id="findAllStudents"
+ resultMap="StudentResult">
+	select * 
+	from students
+</select>
+
+<select id="findStudent_Set"
+ resultType="Student">
+	select stud_id as studId,
+	name,email,dob,phone
+	from students
+</select>
+
+
+<select id="findStudentById_Map"
+parameterType="int" resultType="map">
+	select stud_id,
+	name,email,dob,phone
+	from students
+	where stud_id=#{id}
+</select>
+
+<select id="findStudent_ListMap"
+resultType="map">
+select *
+from students
+</select>
+
+<select id="findAllName_list" 
+resultType="String">
+	SELECT NAME
+	FROM STUDENTS
+</select>
+
+</mapper>
+
+
+

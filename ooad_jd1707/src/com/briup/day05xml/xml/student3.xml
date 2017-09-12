@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students SYSTEM "../dtd/student3.dtd">
+	
+	
+	
+	<students>
+		<stu name="ksa" id="a1"></stu>
+		<stu name="ksa" id="a2"></stu>
+		<stu name="ksa" id="a3" pid="a1 a2 a3"></stu>
+		<!-- <test></test> -->
+	</students>
+	
+	

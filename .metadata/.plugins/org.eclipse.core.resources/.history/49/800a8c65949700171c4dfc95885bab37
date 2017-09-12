@@ -1,0 +1,43 @@
+package com.briup.main;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.briup.util.BIDR;
+
+public class Test1 {
+	@org.junit.Test
+	public void Test() throws Exception{
+		String[] s1=null;
+		BIDR bidr=null;
+		
+		List<String> radwtmpList=new ArrayList<String>();
+		FileReader reader=new FileReader("src/com/briup/file/radwtmp");
+		BufferedReader br=new BufferedReader(reader);
+		//#briup1660|037:wKgB1660A|7|1239110900|44.211.221.247
+		while(br.readLine()!=null){
+			radwtmpList.add(br.readLine());				
+		}
+		for(String str:radwtmpList){
+			bidr=new BIDR();
+			s1=str.split("|");
+			String s0=s1[0];//登录名
+			String ss1=s1[1];//NAS_ip
+			String s2=s1[2];//七上八下
+			String s3=s1[3];//时间
+			String s4=s1[4];//IP
+			if(s2.equals("7")){
+				Timestamp timeLogin = new Timestamp(Long.valueOf(s4));
+				bidr.setAAA_login_name(s0);
+				bidr.setNAS_ip(ss1);
+				
+			}
+			
+		}
+		
+	}
+}

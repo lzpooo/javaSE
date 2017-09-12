@@ -1,5 +1,0 @@
-package com.DaDaCarhire;
-
-public class goodsCar extends Car {
-
-}

@@ -1,0 +1,49 @@
+ 1 import java.util.HashMap;
+ 2 import java.util.Iterator;
+ 3 import java.util.Map;
+ 4 
+ 5 public class TestMap {
+ 6     public static void main(String[] args) {
+ 7         Map<Integer, String> map = new HashMap<Integer, String>();
+ 8         map.put(1, "a");
+ 9         map.put(2, "b");
+10         map.put(3, "ab");
+11         map.put(4, "ab");
+12         map.put(4, "ab");// 和上面相同 ， 会自己筛选
+13         System.out.println(map.size());
+14         // 第一种：
+15         /*
+16          * Set<Integer> set = map.keySet(); //得到所有key的集合
+17          * 
+18          * for (Integer in : set) { String str = map.get(in);
+19          * System.out.println(in + "     " + str); }
+20          */
+21         System.out.println("第一种：通过Map.keySet遍历key和value：");
+22         for (Integer in : map.keySet()) {
+23             //map.keySet()返回的是所有key的值
+24             String str = map.get(in);//得到每个key多对用value的值
+25             System.out.println(in + "     " + str);
+26         }
+27         // 第二种：
+28         System.out.println("第二种：通过Map.entrySet使用iterator遍历key和value：");
+29         Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+30         while (it.hasNext()) {
+31              Map.Entry<Integer, String> entry = it.next();
+32                System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+33         }
+34         // 第三种：推荐，尤其是容量大时
+35         System.out.println("第三种：通过Map.entrySet遍历key和value");
+36         for (Map.Entry<Integer, String> entry : map.entrySet()) {
+37             //Map.entry<Integer,String> 映射项（键-值对）  有几个方法：用上面的名字entry
+38             //entry.getKey() ;entry.getValue(); entry.setValue();
+39             //map.entrySet()  返回此映射中包含的映射关系的 Set视图。
+40             System.out.println("key= " + entry.getKey() + " and value= "
+41                     + entry.getValue());
+42         }
+43         // 第四种：
+44         System.out.println("第四种：通过Map.values()遍历所有的value，但不能遍历key");
+45         for (String v : map.values()) {
+46             System.out.println("value= " + v);
+47         }
+48     }
+49 }

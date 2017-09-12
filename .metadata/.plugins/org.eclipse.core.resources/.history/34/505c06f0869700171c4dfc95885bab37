@@ -1,0 +1,20 @@
+package com.briup.main;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test1 {
+	@org.junit.Test
+	public void Test() throws Exception{
+		List<String> str=new ArrayList<>();
+		FileReader reader=new FileReader("src/com/briup/file/radwtmp");
+		BufferedReader br=new BufferedReader(reader);
+		while(br.readLine()!=null){
+			str.add(br.readLine());
+		}
+		
+	}
+}

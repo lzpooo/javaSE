@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.briup.mybatis.mappers.StudentMapper是我们定义接口的全限定名字 这样就可以使用接口调用映射的SQL语句了 
+这个名字一定要和接口对应上-->
+<mapper namespace="com.briup.mytest.mappers.CoupleMapper">
+	<resultMap type="Husband" id="husbandResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	<resultMap type="Wife" id="wifeResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<result property="husband" column="h_id"/>
+		<association property="husband" resultMap="husbandResult"/>
+	</resultMap>
+	<select id="findWifeById" resultType="int" resultMap="wifeResult">
+		select w.id,w.name,w.age,h.id,h.name,h.age 
+		from wife w,husband h 
+		where w.h_id=h.id
+		and
+		w.id=#{id}
+	</select>
+	
+</mapper>
+
+
+
+
+
+

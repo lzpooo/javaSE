@@ -1,0 +1,3 @@
+<!ELEMENT cds (cd+)>
+<!ELEMENT cd (company+,year?,code)>
+<!ATTLIST cd code CDATA #REQUIRED>

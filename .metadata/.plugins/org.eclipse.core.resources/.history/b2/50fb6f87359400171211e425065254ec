@@ -1,0 +1,28 @@
+package com.briup.mybatis.day_01;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+
+import com.briup.mybatis.mappers.ResultMapper;
+import com.briup.mybatis.pojo.Student;
+import com.briup.mybatis.utils.MyBatisSqlSessionFactory;
+
+public class ResultMapTest {
+	@Test
+	public void findAllStudentTest(){
+		try {
+			
+			SqlSession sqlSession=MyBatisSqlSessionFactory.openSession();
+			ResultMapper mapper = sqlSession.getMapper(ResultMapper.class);
+			List<Student> list = mapper.findAllStudents();
+			for(Student s:list){
+				System.out.println(s);
+			}
+			
+		} catch (Exception e) {
+			
+		}
+	}
+}

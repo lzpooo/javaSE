@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <public publicId="-//Hibernate/Hibernate Configuration DTD 3.0//EN" uri="platform:/resource/ooad_jd1707/src/com/briup/day05xml/auto/dtd/hibernate-configuration-3.0.dtd"/>
+  <public publicId="-//briupxml DTD 3.0//zh_cn" uri="platform:/resource/ooad_jd1707/src/com/briup/day05xml/auto/dtd/student.dtd"/>
+  <system systemId="http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" uri="platform:/resource/ooad_jd1707/src/com/briup/day05xml/auto/schema/spring-beans-3.2.xsd"/>
+  <system systemId="http://www.springframework.org/schema/context/spring-context-3.2.xsd" uri="platform:/resource/ooad_jd1707/src/com/briup/day05xml/auto/schema/spring-context-3.2.xsd"/>
+  <uri name="-//mybatis.org//DTD Config 3.0//EN" uri="platform:/resource/mybatis/src/mybatis-3-config.dtd"/>
+  <uri name="-//mybatis.org//DTD Mapper 3.0//EN" uri="platform:/resource/mybatis/src/mybatis-3-mapper.dtd"/>
+</catalog>

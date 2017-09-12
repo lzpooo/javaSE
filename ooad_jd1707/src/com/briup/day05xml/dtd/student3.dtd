@@ -1,0 +1,40 @@
+<!-- 
+	实现dtd对元素属性的约束
+	格式：<!ATTLIST 元素名称  
+				属性名称   值类型   属性特点
+				属性名称   值类型   属性特点
+>
+	值类型：
+		CDATA：表示属性值是任意字符
+		ID:表示属性值唯一，但是属性值必须符合xml命名规范
+		IDREF/IDREFS：指向文档中ID类型的属性值
+		枚举：(male|female)  属性值二选一
+	
+	属性特点：
+		#REQUIRED：表示属性必须出现
+		#IMPLIED:表示属性可以出现可以不出现
+		default-value：属性可以不出现，但是必须有默认值
+		#FIXED：属性可以不出现，但是出现了必须是指定值
+-->
+<!ELEMENT students (stu+)>
+<!--
+	属性为枚举时的写法
+	<!ATTLIST stu gender (male|female) #REQUIRED>
+-->
+<!--<!ATTLIST stu 
+			多个属性的写法
+			name CDATA #REQUIRED 
+			id ID #REQUIRED
+			pid IDREFS #IMPLIED
+	>-->
+<!--
+	属性如果出现，名字必须为tom 
+	<!ATTLIST stu name CDATA #FIXED "tom"> -->
+<!-- <!ATTLIST stu name CDATA #REQUIRED> -->
+
+
+
+
+
+
+

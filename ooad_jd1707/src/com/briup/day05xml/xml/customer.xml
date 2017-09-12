@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE customers SYSTEM "../dtd/customer.dtd">
+<customers>
+	<customer name="jack">
+		
+	
+	</customer>
+
+</customers>

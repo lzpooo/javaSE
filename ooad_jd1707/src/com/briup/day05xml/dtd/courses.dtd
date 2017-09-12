@@ -1,0 +1,6 @@
+<!ELEMENT courses (course+)>
+<!ELEMENT course (cNumber,cName,cTime)>
+	<!ATTLIST course 
+					cTeacher ID #REQUIRED
+					cClass CDATA #IMPLIED
+	>

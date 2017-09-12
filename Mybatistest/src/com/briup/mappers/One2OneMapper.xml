@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="com.briup.mappers.One2OneMapper">
+<!-- 普通方式 -->
+<!--
+ <resultMap type="Student" id="AA"> 
+  <id property="studId" column="stud_id" /> 
+  <result property="name" column="name" /> 
+  <result property="email" column="email" /> 
+  <result property="dob" column="dob" /> 
+  <result property="phone" column="phone" /> 
+  <result property="address.addrId" column="addr_id" /> 
+  <result property="address.street" column="street" /> 
+  <result property="address.city" column="city" /> 
+  <result property="address.country" column="country" /> 
+</resultMap> 
+
+<select id="selectStudentWithAddress" 
+parameterType="int" 
+resultMap="AA"> 
+select stud_id, name, email,dob,phone, 
+a.addr_id, street, city, country 
+from students s ,addresses a 
+where stud_id=#{studid} 
+	and
+	s.addr_id=a.addr_id(+) 
+</select>  
+-->
+
+<!-- 嵌套结果ResultMap -->
+<!-- 
+<resultMap type="address" 
+id="addressResult">
+<id property="addrId" column="addr_id"/>
+<result property="street" column="street"/>	
+<result property="city" column="city"/>	
+<result property="country" column="country"/>	
+</resultMap>
+
+<resultMap type="Student" 
+id="StudentResult">
+<id column="stud_id" property="studId"/>
+<result column="name" property="name"/>
+<result column="email" property="email"/>
+<result column="dob" property="dob"/>
+<result column="phone" property="phone"/>
+<association property="address" 
+		resultMap="addressResult"/>	
+</resultMap>
+
+<select id="findStudentById_1" 
+parameterType="int" 
+resultMap="StudentResult">
+select stud_id,name,email,dob,phone,
+	a.addr_id,street,city,country
+from students s,addresses a
+where s.addr_id=a.addr_id
+and 
+stud_id=#{id}
+		
+</select> -->
+
+<!-- 嵌套查询Select -->
+<resultMap type="address" 
+id="addressResult">
+<id property="addrId" column="addr_id"/>
+<result property="street" column="street"/>	
+<result property="city" column="city"/>	
+<result property="country" column="country"/>	
+</resultMap>
+			
+<select id="findAddress" 
+parameterType="int"
+resultMap="addressResult">
+	select * from addresses
+	where addr_id=#{id}
+</select>
+
+
+<resultMap type="Student" 
+id="StudentResult">
+<id column="stud_id" property="studId"/>
+<result column="name" property="name"/>
+<result column="email" property="email"/>
+<result column="dob" property="dob"/>
+<result column="phone" property="phone"/>
+<association property="address" 
+column="addr_id" select="findAddress"/>	
+</resultMap>
+
+<select id="findStudentById_1"
+parameterType="int" 
+resultMap="StudentResult">
+	select * from students
+	where stud_id=#{id}
+</select>
+
+<insert id="insertAddress"
+parameterType="Address">
+<selectKey keyProperty="addrId"
+resultType="int" order="BEFORE">
+select my_sq.nextval from dual
+</selectKey>
+insert into 
+addresses(addr_id,street,city,country)
+values(#{addrId},#{street},#{city},#{country})
+</insert>
+
+</mapper>
+
+
+

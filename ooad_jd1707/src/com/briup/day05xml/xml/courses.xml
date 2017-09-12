@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE courses SYSTEM "../dtd/courses.dtd">
+<courses>
+	<course cTeacher="lsa" cClass="sa">
+		<cNumber>15</cNumber>
+		<cName>lzp</cName>
+		<cTime>2</cTime>
+	</course>
+</courses>

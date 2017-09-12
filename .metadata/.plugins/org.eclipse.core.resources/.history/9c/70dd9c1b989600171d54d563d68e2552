@@ -1,0 +1,15 @@
+package com.briup.mytest.pojo;
+
+import java.util.List;
+
+/**
+ * 
+ * @author LZP
+ * 2017年9月11日
+ */
+public class Teacher {
+	private Integer teacherId;
+	private String teacherName;
+	private Integer teacherAge;
+	private List<Student> studentList;
+}

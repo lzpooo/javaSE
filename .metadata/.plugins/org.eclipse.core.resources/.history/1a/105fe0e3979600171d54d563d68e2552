@@ -1,0 +1,9 @@
+package com.briup.mytest.pojo;
+/**
+ * 
+ * @author LZP
+ * 2017年9月11日
+ */
+public class Teacher {
+
+}

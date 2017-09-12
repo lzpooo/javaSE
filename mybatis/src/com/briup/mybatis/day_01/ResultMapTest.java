@@ -1,0 +1,107 @@
+package com.briup.mybatis.day_01;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+
+import com.briup.mybatis.mappers.ResultMapper;
+import com.briup.mybatis.pojo.Student;
+import com.briup.mybatis.utils.MyBatisSqlSessionFactory;
+
+public class ResultMapTest {
+	@Test
+	public void findAllStudentTest(){
+		SqlSession sqlSession=null;
+		try {
+			
+			sqlSession=MyBatisSqlSessionFactory.openSession();
+			ResultMapper mapper = sqlSession.getMapper(ResultMapper.class);
+			List<Student> list = mapper.findAllStudents();
+			for(Student s:list){
+				System.out.println(s);
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		finally{
+			if(sqlSession!=null){
+				sqlSession.close();
+			}
+		}
+	}
+
+	@Test
+	public void findStudents_setTest(){
+		SqlSession sqlSession=null;
+		try {
+			
+			sqlSession=MyBatisSqlSessionFactory.openSession();
+			ResultMapper mapper = sqlSession.getMapper(ResultMapper.class);
+			Set<Student> list = mapper.findStudents_set();
+			for(Student s:list){
+				System.out.println(s);
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		finally{
+			if(sqlSession!=null){
+				sqlSession.close();
+			}
+		}
+	}
+
+	@Test
+	public void findStudentById_mapTest(){
+		SqlSession sqlSession=null;
+		try {
+			
+			sqlSession=MyBatisSqlSessionFactory.openSession();
+			ResultMapper mapper = sqlSession.getMapper(ResultMapper.class);
+			Map<String,Object> map = mapper.findStudentById_map(3);
+			for(String key:map.keySet()){
+				System.out.println(key+":"+map.get(key));
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		finally{
+			if(sqlSession!=null){
+				sqlSession.close();
+			}
+		}
+	}
+
+	@Test
+	public void findStudent_ListMapTest(){
+		SqlSession sqlSession=null;
+		try {
+			
+			sqlSession=MyBatisSqlSessionFactory.openSession();
+			ResultMapper mapper = sqlSession.getMapper(ResultMapper.class);
+			List<Map<String,Object>> list = mapper.findStudent_ListMap();
+			for(Map<String,Object> m:list){
+				for(String key:m.keySet()){
+					System.out.println(key+":"+m.get(key));
+				}
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		finally{
+			if(sqlSession!=null){
+				sqlSession.close();
+			}
+		}
+	}
+
+}
+
+

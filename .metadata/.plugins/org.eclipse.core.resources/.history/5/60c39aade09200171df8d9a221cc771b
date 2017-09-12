@@ -1,0 +1,41 @@
+package com.briup.mybatis.day_01;
+
+import java.io.InputStream;
+import java.util.Date;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import com.briup.mybatis.mappers.StudentMapper;
+import com.briup.mybatis.pojo.Student;
+
+/**
+ * 测试插入
+ * 
+ * @author LZP
+ *
+ * 2017年9月6日
+ */
+public class StudentMapperTest {
+	@Test
+	public void testInsert(){
+		
+		try {
+			InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml"); 
+			SqlSessionFactory sqlSessionFactory = 
+					new SqlSessionFactoryBuilder().build(inputStream);
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			Student s = new Student(1,"tom","123@briup.com",new Date());
+			studentMapper.insertStudent(s);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

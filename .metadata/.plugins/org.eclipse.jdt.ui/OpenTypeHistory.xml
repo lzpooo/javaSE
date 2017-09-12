@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
 <typeInfo handle="=DaDaCarhire/src&lt;com.DaDaCarhire{Car.java[Car" modifiers="1" timestamp="1494765090133"/>
+<typeInfo handle="=briup/src&lt;ch10{Animal.java[Animal" modifiers="1024" timestamp="1501163694717"/>
+<typeInfo handle="=briup/src&lt;ch10{Pet.java[Pet" modifiers="513" timestamp="1501155389789"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{Geometry.java[Geometry" modifiers="513" timestamp="1501157652167"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{Water.java[Water" modifiers="1" timestamp="1502676488843"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{FangTang.java[FangTang" modifiers="513" timestamp="1501164667179"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{GuoLv.java[GuoLv" modifiers="513" timestamp="1501164664033"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{HuanChong.java[HuanChong" modifiers="513" timestamp="1501164519509"/>
+<typeInfo handle="=briup/src&lt;ch10ex3{JiaRe.java[JiaRe" modifiers="513" timestamp="1501164665647"/>
+<typeInfo handle="=briup/src&lt;ch13ex{Account.java[Account" modifiers="1" timestamp="1501590553735"/>
+<typeInfo handle="=briup/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.lang(Exception.class[Exception" modifiers="33" timestamp="1462974564756"/>
+<typeInfo handle="=briup/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;javax.swing(JFrame.class[JFrame" modifiers="33" timestamp="1462974564756"/>
+<typeInfo handle="=briup/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1462974564756"/>
+<typeInfo handle="=briup/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.lang(Thread.class[Thread" modifiers="33" timestamp="1462974564756"/>
+<typeInfo handle="=ooad_jd1707/src&lt;com.briup.day02.factorytest{Car.java[Car" modifiers="513" timestamp="1503311892093"/>
+<typeInfo handle="=ooad_jd1707/src&lt;com.briup.day02.factorytest{Factory.java[Factory" modifiers="513" timestamp="1503313090785"/>
+<typeInfo handle="=ooad_jd1707/src&lt;com.briup.day02.buildexercise{PersonBuilder.java[PersonBuilder" modifiers="513" timestamp="1503384239013"/>
+<typeInfo handle="=ooad_jd1707/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.security.acl(Permission.class[Permission" modifiers="1537" timestamp="1462974564756"/>
+<typeInfo handle="=ooad_jd1707/src&lt;com.briup.day03.decoratortest{Action.java[Action" modifiers="513" timestamp="1503393251147"/>
+<typeInfo handle="=ooad_jd1707/src&lt;com.briup.day03.decoratortest{Decorator.java[Decorator" modifiers="1025" timestamp="1503393520818"/>
 </typeInfoHistroy>

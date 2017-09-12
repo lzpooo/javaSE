@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="com.briup.mappers.One2ManyMapper">
+
+<!-- 嵌套结果集ResultMap -->
+<resultMap type="Address" 
+id="AddressResult"> 
+  <id property="addrId" column="addr_id" /> 
+  <result property="street" column="street" /> 
+  <result property="city" column="city" /> 
+  <result property="country" column="country" /> 
+</resultMap>
+
+<resultMap type="Course"
+ id="CourseResult"> 
+  <id column="course_id" property="courseId" /> 
+  <result column="cname" property="name" /> 
+  <result column="description" property="description" /> 
+  <result column="start_date" property="startDate" /> 
+  <result column="end_date" property="endDate" /> 
+</resultMap>
+
+<resultMap type="Tutor" 
+id="TutorResult"> 
+  <id column="tutor_id" property="tutorId" /> 
+  <result column="name" property="name" /> 
+  <result column="email" property="email" /> 
+  <result column="phone" property="phone" />
+ <association property="address" 
+ resultMap="AddressResult"/>
+ <collection property="courses"
+ resultMap="CourseResult"/>
+</resultMap> 
+
+<select id="SelectAlltoTutor"
+resultMap="TutorResult" 
+parameterType="int">
+
+select t.tutor_id,t.name,t.email,t.phone,
+	   a.addr_id,a.street,a.city,a.country,
+	   c.course_id,c.name as cname,c.description,c.start_date,c.end_date,c.tutor_id
+from tutors t,courses c,addresses a
+where t.tutor_id=c.tutor_id
+ 	  and
+ 	  t.addr_id=a.addr_id
+ 	  and
+ 	  t.tutor_id=#{id}
+</select>
+
+<!-- 嵌套查询Select -->
+<!-- <resultMap type="Address" 
+id="AddressResult"> 
+  <id property="addrId" column="addr_id" /> 
+  <result property="street" column="street" /> 
+  <result property="city" column="city" /> 
+  <result property="country" column="country" /> 
+</resultMap>
+<select id="findAddress" 
+parameterType="int"
+resultMap="AddressResult">
+select * from addresses
+where addr_id=#{id}
+</select>
+
+
+<resultMap type="Course"
+ id="CourseResult"> 
+  <id column="course_id" property="courseId" /> 
+  <result column="cname" property="name" /> 
+  <result column="description" property="description" /> 
+  <result column="start_date" property="startDate" /> 
+  <result column="end_date" property="endDate" /> 
+</resultMap>
+<select id="findCourse" 
+parameterType="int"
+resultMap="CourseResult">
+select * from courses
+where tutor_id=#{id}
+</select>
+
+
+<resultMap type="Tutor" 
+id="TutorResult"> 
+  <id column="tutor_id" property="tutorId" /> 
+  <result column="name" property="name" /> 
+  <result column="email" property="email" /> 
+  <result column="phone" property="phone" />
+  <association property="address"
+  	column="addr_id" select="findAddress"
+  />
+  <collection property="courses"
+  column="tutor_id" select="findCourse"/>
+</resultMap>
+
+<select id="findTutor" 
+parameterType="int"
+resultMap="TutorResult">
+select * from tutors
+where tutor_id=#{id}
+</select> -->
+
+</mapper>
+
+
+

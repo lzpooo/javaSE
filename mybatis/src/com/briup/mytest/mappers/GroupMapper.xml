@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.briup.mybatis.mappers.StudentMapper是我们定义接口的全限定名字 这样就可以使用接口调用映射的SQL语句了 
+这个名字一定要和接口对应上-->
+<mapper namespace="com.briup.mytest.mappers.GroupMapper">
+	 <resultMap type="User" id="UserResult">
+	 	<id property="id" column="id"/>
+	 	<result property="name" column="name"/>
+	 	<result property="age" column="age"/>
+	 </resultMap>
+	 <resultMap type="Group" id="GroupResult">
+	 	<id property="groupId" column="group_id"/>
+	 	<result property="groupName" column="group_name"/>
+	 	<collection property="user" resultMap="UserResult"/>
+	 </resultMap>
+	 <select id="findAll" resultMap="GroupResult">
+	 	select id,g_id,group_id,group_name,name,age 
+	 	from t_group,a_user 
+	 	where g_id=group_id
+	 </select>
+	 <insert id="insertUesr" parameterType="User">
+	 	insert into a_user(id,name,age,g_id) values(#{param1.id},#{param1.name},#{param1.age},#{param2})
+	 </insert>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students SYSTEM "../dtd/students.dtd">
+<students>
+	<student>
+		<first_name>li</first_name>
+		<last_name>zp</last_name>
+		<age>18</age>
+		<gender>male</gender>
+		<adress>
+			<city>js</city>
+			<street>xyl</street>
+			<zip>188</zip>
+		</adress>
+	</student>
+</students>

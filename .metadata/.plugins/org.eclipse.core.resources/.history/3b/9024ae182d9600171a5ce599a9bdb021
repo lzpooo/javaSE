@@ -1,0 +1,12 @@
+package com.briup.mytest.pojo;
+/**
+ * 妻子类
+ * @author LZP
+ * 2017年9月10日
+ */
+public class Wife {
+	private String name;
+	private int age;
+	private int id;
+	private Husband husband;
+}

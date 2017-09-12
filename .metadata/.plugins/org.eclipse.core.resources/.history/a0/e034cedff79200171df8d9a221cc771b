@@ -1,0 +1,62 @@
+package com.briup.mybatis.day_01;
+
+import java.io.InputStream;
+import java.util.Date;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import com.briup.mybatis.mappers.StudentMapper;
+import com.briup.mybatis.pojo.Student;
+
+/**
+ * 测试插入
+ * 
+ * @author LZP
+ *
+ * 2017年9月6日
+ */
+public class StudentMapperTest {
+	@Test
+	public void testInsert(){
+		
+		try {
+			//加载配置文件
+			InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml"); 
+			//创建SqlSessionFactory工厂类对象
+			SqlSessionFactory sqlSessionFactory = 
+					new SqlSessionFactoryBuilder().build(inputStream);
+			//通过工厂类对象创建sqlSession对象，用来动态生成映射接口的实现类
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			
+			//执行操作
+			//创建接口的实现类对象
+			StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+			
+			//创建一个学生信息，方便插入
+			//Student s1 = new Student(1,"tom","123@briup.com",new Date());			
+			//调用插入方法
+			//studentMapper.insertStudent(s1);
+			//提交
+			//sqlSession.commit();
+			
+			
+			
+			//修改
+			Student s3=new Student(1,"jack","1598857724@qq.com",new Date());
+			studentMapper.updateStudentById(s3,1 );
+			sqlSession.commit();
+			
+			//查询
+//			Student s2 = studentMapper.findStudentById(1);
+//			System.out.println(s2);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

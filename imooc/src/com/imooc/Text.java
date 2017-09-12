@@ -1,18 +1,32 @@
 package com.imooc;
 
+import java.util.Scanner;
+
 public class Text {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-    Person obj1 = new Person();
-    Person obj2 = new Chinese();
-    Person obj3 = new American();
-    Person obj4 = new France();
-    obj1.speak();
-    obj2.speak();
-    obj3.speak();
-    obj4.speak();
-    
+		
+		int m=1;
+		for(int a=3;a<=1000;a++){
+		
+		//System.out.println(a);
+			for(int i=2;i<a;i++){
+				if (a%i==0){
+					m=m+i;
+				//System.out.println(m);
+				}
+				else{
+					continue ;
+				}
+				
+			}
+			if(a==m){
+				System.out.println(a);
+				
+			}
+			
+			m=1;
+		}
 	}
 
 }

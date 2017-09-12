@@ -1,0 +1,9 @@
+package com.briup.jdbc.day_02;
+/**
+ * 使用statement 测试安全注入问题
+ * @author Administrator
+ *
+ */
+public class Student1 {
+	
+}

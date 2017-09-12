@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cds SYSTEM "../dtd/cds.dtd">
+<cds>
+	<cd code="sasaas">
+		<company></company>
+		<year></year>
+		<code></code>
+	</cd>
+</cds>

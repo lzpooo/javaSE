@@ -1,0 +1,44 @@
+package com.briup.client;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Properties;
+
+import org.junit.Test;
+
+import com.briup.util.BIDR;
+import com.briup.woss.client.Gather;
+
+/**
+ *完成数据采集，封装成一个装有BIDR对象的集合
+ */
+public class GatherImpl implements Gather{
+
+	@Override
+	public void init(Properties arg0) {
+			
+	}
+
+	/*
+	 * 采集
+	 */
+	@Override
+	@Test
+	public Collection<BIDR> gather(){
+		try {
+			FileReader reader=new FileReader("src/com/briup/file/radwtmp");
+			BufferedReader br=new BufferedReader(reader);
+			String bs=br.readLine();
+			System.out.println(bs);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

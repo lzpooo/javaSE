@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students SYSTEM "../dtd/student2.dtd">
+	
+	
+	
+	<students>
+		<stu>
+			<id>1</id>
+			<name>小张</name>
+			<age>18</age>
+		</stu>
+		<!-- <test></test> -->
+	</students>

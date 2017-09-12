@@ -1,0 +1,56 @@
+body div ul{
+	margin:0;
+	padding:0;
+}
+.main{
+	width:460px;
+	height:400px;
+	margin:40px auto;
+	/* background:red; */
+}
+.left{
+	float:left;
+	width:150px;
+	height:400px;
+}
+.left ul{
+	width:150px;
+	height:400px;
+	list-style:none;
+	/* background-color:blue; */
+}
+.left ul li{
+	width:150px;
+	height:30px;
+	line-height:30px;
+	/* background-color:cyan; */
+}
+.right{
+	float:left;
+	width:310px;
+	height:400px;
+}
+.right ul{
+	width:310px;
+	height:400px;
+	list-style:none;
+/* 	background:green; */
+}
+.right ul li{
+	width:310px;
+	height:30px;
+	
+	line-height:30px;
+}
+.inner{
+	margin:0;
+	padding:0;
+	float:right;
+	margin-right:10px;
+}
+.inner2{
+	margin:0;
+	padding:0;
+	float:left;
+	margin-left:10px;
+}
