@@ -1,0 +1,97 @@
+package com.briup.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Collection;
+import java.util.Properties;
+
+import org.junit.Test;
+
+import com.briup.util.BIDR;
+import com.briup.woss.server.Server;
+/**
+ * 中央服务器
+ */
+public class ServerImpl implements Server{
+	Collection<BIDR> bidr=null;
+	
+	@Override
+	public void init(Properties arg0) {
+		
+	}
+
+	@Override
+	public Collection<BIDR> revicer() throws Exception {
+		boolean flag=true;
+		ServerSocket ss=null;
+		Socket client=null;
+		try {
+			ss=new ServerSocket(9898);
+			System.out.println("等待连接...");
+			while(flag){
+				client=ss.accept();
+				new ServerThread(client).start();			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bidr;
+	}
+	
+	@Test
+	public void testtt(){
+		ServerImpl si=new ServerImpl();
+		try {
+			Collection<BIDR> revicer = si.revicer();
+			for(BIDR b:revicer){
+				System.out.println(b.getAAA_login_name());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void shutdown() {
+		
+	}
+
+}
+class ServerThread extends Thread{
+	Socket s=null;
+	Collection<BIDR> bidr=null;
+	
+	public ServerThread(Socket s){
+		this.s=s;
+	}
+	
+	public ServerThread() {
+	}
+
+	@Override
+	public void run(){
+		System.out.println(getName() + " accept client socket");
+		try {
+			InputStream in=s.getInputStream();
+			ObjectInputStream ois=new ObjectInputStream(in);
+			bidr=(Collection<BIDR>) ois.readObject();
+			new ServerThread().getBidr(bidr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public Collection<BIDR> getBidr(Collection<BIDR> bid){
+		this.bidr=bid;
+		return bidr;
+	}
+}
+
+
+

@@ -1,0 +1,39 @@
+package com.briup.server;
+
+import java.net.ServerSocket;
+import java.util.Collection;
+import java.util.Properties;
+
+import com.briup.util.BIDR;
+import com.briup.woss.server.Server;
+/**
+ * 中央服务器
+ */
+public class ServerImpl implements Server{
+
+	@Override
+	public void init(Properties arg0) {
+	}
+
+	@Override
+	public Collection<BIDR> revicer() throws Exception {
+		boolean flag=true;
+		ServerSocket ss=null;
+		try {
+			ss=new ServerSocket(9898);
+			System.out.println("等待连接...");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void shutdown() {
+		
+	}
+
+}

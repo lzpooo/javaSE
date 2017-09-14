@@ -6,6 +6,7 @@
 	<classpathentry kind="lib" path="jar/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="jar/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="jar/woss_interface.jar"/>
+	<classpathentry kind="lib" path="jar/mybatis-3.4.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

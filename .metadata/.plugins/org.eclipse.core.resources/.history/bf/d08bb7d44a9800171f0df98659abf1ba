@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 配置当前文件中所有变量的属性值(key-value) -->
+<properties resource="mybatis.properties">
+<!-- 外部文件的优先级要高 -->
+	<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+	<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
+	<property name="username" value="jd1707"/>
+	<property name="password" value="jd1707"/>
+	<!-- <property name="username" value="tete"/>
+	<property name="password" value="tete"/> -->
+</properties>
+
+<!-- 设置全局参数 -->
+<settings>
+<setting name="logPrefix" value="jd1707： "/>
+</settings>
+
+
+<!-- 给类型起别名 -->
+<typeAliases>
+<!-- <typeAlias 
+type="com.briup.pojo.Student" 
+alias="Student" /> -->
+<!-- <package name="com.briup.pojo"/> -->
+<package name="com.briup.mybatis.pojo"/>
+
+</typeAliases>
+
+
+<!-- 自定义类型处理器 -->
+<!-- <typeHandlers>
+	<typeHandler handler="com.briup.handler.PhoneTypeHandler"/>
+</typeHandlers> -->
+
+
+<!-- 配置数据库环境变量/指定默认运行环境 -->
+<environments default="development">
+
+<environment id="development">
+<transactionManager type="JDBC"></transactionManager>
+	<dataSource type="POOLED">
+<property name="driver" value="${driver}" /> 
+<property name="url" value="${url}" /> 
+<property name="username" value="${username}" />
+<property name="password" value="${password}" />
+	</dataSource>
+</environment>
+
+</environments>
+
+<!-- 用来将映射文件 关联过来(映射)的。 -->
+<mappers>
+<!-- 	
+<mapper resource="com/briup/mappers/StudentMapper.xml"/> 
+
+<mapper resource="com/briup/mappers/ResultMapper.xml"/>
+<mapper resource="com/briup/mappers/One2OneMapper.xml"/>
+<mapper resource="com/briup/mappers/One2ManyMapper.xml"/>
+-->
+<mapper resource="com/briup/mappers/Many2ManyMapper.xml"/>
+
+
+<!-- 	<mapper url="http:XXX.xml"/> -->
+<!-- <mapper class="com.briup.mappers.StudentMapper"/> -->
+<!-- <package name="com.briup.mappers"/> -->
+
+</mappers>
+	
+</configuration>

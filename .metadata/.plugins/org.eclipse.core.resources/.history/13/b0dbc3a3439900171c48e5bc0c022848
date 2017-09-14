@@ -1,0 +1,133 @@
+package com.briup.common;
+
+import java.io.File;
+import java.util.List;
+import java.util.Properties;
+
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+import com.briup.util.BackUP;
+import com.briup.util.Logger;
+import com.briup.woss.client.Client;
+import com.briup.woss.client.Gather;
+import com.briup.woss.server.DBStore;
+import com.briup.woss.server.Server;
+/**
+ * 配置模块
+ */
+public class Configuration implements com.briup.util.Configuration{
+	private static Properties properties1=null;
+	private static Properties properties2=null;
+	
+	/*
+	 * 使用dom4j解析配置的xml文件并保存在properties中
+	 */
+	public static void getDom4j(){
+		properties1 = new Properties();
+		properties2= new Properties();
+		
+		try {
+			SAXReader reader=new SAXReader();
+			File filePath=new File("src\\com\\briup\\file\\conf.xml");
+			Document document=reader.read(filePath);
+			//获取根元素
+			Element rootElement = document.getRootElement();
+			//获取一级节点
+			/*
+			 * gather,client,server,dbstore,logger,backup
+			 */
+			@SuppressWarnings("unchecked")
+			List<Element> element1 = rootElement.elements();
+			for(Element e1:element1){
+				//一级子元素标签名(com.briup.client.name)
+				String name=e1.getName();
+				//一级子元素的属性
+				@SuppressWarnings("unchecked")
+				List<Attribute> attributes = e1.attributes();
+				for(Attribute a:attributes) {
+					//代表class
+					@SuppressWarnings("unused")
+					String attributeName = a.getName();
+					String attributeValue = a.getValue();
+					//System.out.println(name+"  "+attributeName+"  "+attributeValue);
+					properties1.setProperty(name, attributeValue);
+				}
+				List<Element> element2 = e1.elements(); 
+				for (Element e2 : element2) { 
+					String element2Name=e2.getName(); 
+					String element2Value = e2.getText(); 
+					//System.out.println(element2Name+"  "+element2Value);
+					properties2.setProperty(element2Name, element2Value);
+				}
+			}
+			/*String s1 = properties1.getProperty("backup");
+			String s2 = properties1.getProperty("client");
+			String s3 = properties1.getProperty("server");
+			String s4 = properties1.getProperty("dbstore");
+			String s5 = properties1.getProperty("gather");
+			String s6 = properties1.getProperty("backup");
+			System.out.println(s1+s2+s3+s4+s5+s6);*/
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public BackUP getBackup() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("backup");
+		//通过反射拿到类的实例
+		BackUP backup = (BackUP)Class.forName(className).newInstance();
+		backup.init(properties2);
+		return backup;
+	}
+
+	@Override
+	public Client getClient() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("client");
+		Client client = (Client)Class.forName(className).newInstance();
+		client.init(properties2);
+		return client;
+	}
+
+	@Override
+	public DBStore getDBStore() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("dbstore");
+		DBStore dbstore = (DBStore)Class.forName(className).newInstance();
+		dbstore.init(properties2);
+		return dbstore;
+	}
+
+	@Override
+	public Gather getGather() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("gather");
+		Gather gather = (Gather)Class.forName(className).newInstance();
+		gather.init(properties2);
+		return gather;
+	}
+
+	@Override
+	public Logger getLogger() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("logger");
+		Logger logger = (Logger)Class.forName(className).newInstance();
+		logger.init(properties2);
+		return logger;
+	}
+
+	@Override
+	public Server getServer() throws Exception {
+		getDom4j();
+		String className=properties1.getProperty("server");
+		Server server = (Server)Class.forName(className).newInstance();
+		server.init(properties2);
+		return server;
+	}
+
+}

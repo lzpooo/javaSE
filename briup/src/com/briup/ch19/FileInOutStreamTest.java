@@ -7,7 +7,6 @@ import java.io.IOException;
 public class FileInOutStreamTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		FileInputStream[] fis1 = new FileInputStream[10];
 		FileOutputStream[] fos1 = new FileOutputStream[10];
 		try {
@@ -26,7 +25,6 @@ public class FileInOutStreamTest {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
 			try {
@@ -39,7 +37,6 @@ public class FileInOutStreamTest {
 					}
 				}
 			} catch (IOException e2) {
-				// TODO: handle exception
 				System.out.println(e2.getMessage());
 			}
 

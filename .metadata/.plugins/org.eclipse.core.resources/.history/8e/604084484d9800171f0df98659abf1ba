@@ -1,0 +1,70 @@
+package com.briup.mybatis.pojo;
+
+import java.sql.Timestamp;
+
+import com.briup.util.BIDR;
+
+public class BIDR1 extends BIDR {
+
+	@Override
+	public String getAAA_login_name() {
+		return super.getAAA_login_name();
+	}
+
+	@Override
+	public Timestamp getLogin_date() {
+		return super.getLogin_date();
+	}
+
+	@Override
+	public String getLogin_ip() {
+		return super.getLogin_ip();
+	}
+
+	@Override
+	public Timestamp getLogout_date() {
+		return super.getLogout_date();
+	}
+
+	@Override
+	public String getNAS_ip() {
+		return super.getNAS_ip();
+	}
+
+	@Override
+	public Integer getTime_deration() {
+		return super.getTime_deration();
+	}
+
+	@Override
+	public void setAAA_login_name(String aAA_login_name) {
+		super.setAAA_login_name(aAA_login_name);
+	}
+
+	@Override
+	public void setLogin_date(Timestamp login_date) {
+		super.setLogin_date(login_date);
+	}
+
+	@Override
+	public void setLogin_ip(String login_ip) {
+		super.setLogin_ip(login_ip);
+	}
+
+	@Override
+	public void setLogout_date(Timestamp logout_date) {
+		super.setLogout_date(logout_date);
+	}
+
+	@Override
+	public void setNAS_ip(String nAS_ip) {
+		super.setNAS_ip(nAS_ip);
+	}
+
+	@Override
+	public void setTime_deration(Integer time_deration) {
+		super.setTime_deration(time_deration);
+	}
+	
+	
+}

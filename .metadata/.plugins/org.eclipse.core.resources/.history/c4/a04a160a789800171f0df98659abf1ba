@@ -1,0 +1,44 @@
+package com.briup.server;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.Properties;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.briup.mybatis.mappers.Mapper;
+import com.briup.mybatis.utils.WossSqlSessionFactory;
+import com.briup.util.BIDR;
+import com.briup.woss.server.DBStore;
+/**
+ * 执行入库操作
+ */
+public class DBStoreImpl implements DBStore{
+
+	
+	@Override
+	public void init(Properties arg0) {
+	}
+
+	/*
+	 *入库 
+	 */
+	@Override
+	public void saveToDB(Collection<BIDR> bidr) throws Exception {
+		SqlSession sqlSession=null;
+		sqlSession=WossSqlSessionFactory.openSession();
+		Mapper mapper = sqlSession.getMapper(Mapper.class);
+		for(BIDR b:bidr){
+			//int day=b.getLogin_date().getDate();
+			mapper.insertBIDR(b);
+			sqlSession.commit();
+		}
+		if(sqlSession!=null){
+			sqlSession.close();
+		}
+		
+	}
+
+}

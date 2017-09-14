@@ -1,0 +1,9 @@
+package com.briup.mybatis.mappers;
+/**
+ * mapper接口
+ * @author LZP
+ * 2017年9月13日
+ */
+public interface Mapper {
+	
+}

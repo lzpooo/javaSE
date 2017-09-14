@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias type="com.briup.mybatis.pojo.Student" alias="Student" /> -->
+		<package name="com.briup.mytest.pojo"/>
+	</typeAliases>
+
+	<!-- 自定义类型处理器 -->
+	<!-- <typeHandlers>
+		<typeHandler handler="com.briup.mybatis.handler.PhoneTypeHandler"/>
+	</typeHandlers> -->
+
+	<!-- 配置数据库环境变量、指定默认运行环境 ，根据子环境的ID值-->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<!-- 配置当前文件中所有的属性值(key  value),可以使用${key}的方式添加属性值 -->
+				<!-- 外部文件的优先级高 -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" /> 
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" /> 
+				<property name="username" value="jd1707" />
+				<property name="password" value="jd1707" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/briup/mytest/mappers/TeacherStudentMapper.xml"/>
+	</mappers>
+	
+</configuration>

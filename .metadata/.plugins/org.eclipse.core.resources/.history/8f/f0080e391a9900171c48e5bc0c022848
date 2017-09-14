@@ -1,0 +1,140 @@
+package com.briup.common;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
+import java.util.Properties;
+
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.junit.Test;
+
+import com.briup.util.BackUP;
+import com.briup.util.Logger;
+import com.briup.woss.client.Client;
+import com.briup.woss.client.Gather;
+import com.briup.woss.server.DBStore;
+import com.briup.woss.server.Server;
+/**
+ * 配置模块
+ */
+public class Configuration implements com.briup.util.Configuration{
+	private static Properties properties=null;
+	
+	@Test
+	public void getDom4j(){
+		properties = new Properties();
+		try {
+			SAXReader reader=new SAXReader();
+			File filePath=new File("src\\com\\briup\\file\\conf.xml");
+			Document document=reader.read(filePath);
+			//获取根元素
+			Element rootElement = document.getRootElement();
+			//获取一级节点
+			/*
+			 * gather,client,server,dbstore,logger,backup
+			 */
+			List<Element> element1 = rootElement.elements();
+			for(Element e1:element1){
+				//一级子元素标签名(com.briup.client.name)
+				String name=e1.getName();
+				//一级子元素的属性
+				List<Attribute> attributes = e1.attributes();
+				for(Attribute a:attributes){
+					//代表class
+					String attributeName = a.getName();
+					String attributeValue = a.getValue();
+					System.out.println(name+"  "+attributeName+"  "+attributeValue);
+					//properties.setProperty(name, attributeValue);
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public BackUP getBackup() throws Exception {
+		for(Element e:list){
+			if("backup".equals(e.getName())){
+				
+			}
+			
+		}
+		
+		return null;
+	}
+
+	@Override
+	public Client getClient() throws Exception {
+		FileOutputStream fos =null;
+		for(Element e1:list){
+			if("client".equals(e1.getName())){
+				List<Element> elements=e1.elements();
+				for(Element e2:elements){
+					String str=e2.getName()+"="+e2.getTextTrim();
+					Properties
+					
+					
+					/*fos = new FileOutputStream("src\\com\\briup\\file\\Client.properties");
+					byte[] b=new byte[1024];
+					b=str.getBytes();
+					fos.write(b);
+					fos.flush();*/
+				}
+				
+			}
+		}
+		fos.close();
+		return null;
+	}
+
+	@Override
+	public DBStore getDBStore() throws Exception {
+		for(Element e:list){
+			if("dbstore".equals(e.getName())){
+				
+			}
+			
+		}
+		return null;
+	}
+
+	@Override
+	public Gather getGather() throws Exception {
+		for(Element e:list){
+			if("gather".equals(e.getName())){
+				
+			}
+			
+		}
+		return null;
+	}
+
+	@Override
+	public Logger getLogger() throws Exception {
+		for(Element e:list){
+			if("logger".equals(e.getName())){
+				
+			}
+			
+		}
+		return null;
+	}
+
+	@Override
+	public Server getServer() throws Exception {
+		for(Element e:list){
+			if("server".equals(e.getName())){
+				
+			}
+			
+		}
+		return null;
+	}
+
+}

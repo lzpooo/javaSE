@@ -1,0 +1,17 @@
+package com.briup.mybatis.pojo;
+
+import com.briup.util.BIDR;
+
+public class BIDR1 extends BIDR {
+
+	@Override
+	public String toString() {
+		return "BIDR1 [getAAA_login_name()=" + getAAA_login_name()
+				+ ", getLogin_ip()=" + getLogin_ip() + ", getLogin_date()="
+				+ getLogin_date() + ", getLogout_date()=" + getLogout_date()
+				+ ", getNAS_ip()=" + getNAS_ip() + ", getTime_deration()="
+				+ getTime_deration() +  "]";
+	}
+	
+	
+}

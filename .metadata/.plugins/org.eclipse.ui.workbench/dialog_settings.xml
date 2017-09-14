@@ -3,6 +3,8 @@
 	<section name="PreferencesImportWizard">
 		<item value="D:\360data\重要数据\我的图片\theme-1.epf" key=""/>
 		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="D:\360极速浏览器下载\theme-66.epf"/>
+			<item value="D:\360极速浏览器下载\theme-1.epf"/>
 			<item value="D:\360data\重要数据\我的图片\theme-1.epf"/>
 			<item value="D:\360data\重要数据\我的图片\theme-3.epf"/>
 		</list>
@@ -62,7 +64,7 @@
 		<item value="true" key="actionSetFilter"/>
 	</section>
 	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="org.eclipse.ui.wizards.import.Preferences" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<item value="org.eclipse.jdt.internal.ui.jarpackager.JarPackageWizard" key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>

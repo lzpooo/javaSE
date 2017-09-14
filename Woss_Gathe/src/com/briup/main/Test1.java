@@ -1,9 +1,7 @@
 package com.briup.main;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +25,7 @@ public class Test1 {
 		int count1 = 0;
 		try {
 			FileReader reader = new FileReader("src/com/briup/file/radwtmp");
+			@SuppressWarnings("resource")
 			BufferedReader br = new BufferedReader(reader);
 			String bs = null;
 			while ((bs = br.readLine()) != null) {
@@ -103,6 +102,7 @@ public class Test1 {
 		try {
 			FileReader reader = new FileReader("src/com/briup/file/radwtmp");
 			//System.out.println("4");
+			@SuppressWarnings("resource")
 			BufferedReader br = new BufferedReader(reader);
 			String bs=null;
 			while ((bs = br.readLine()) != null) {

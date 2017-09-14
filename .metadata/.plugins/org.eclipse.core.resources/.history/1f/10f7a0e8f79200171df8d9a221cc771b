@@ -1,5 +1,0 @@
-package com.briup.mybatis.utils;
-
-public class MyBatisSqlSessionFactory {
-
-}

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-
+import com.briup.common.Configuration;
 import com.briup.util.BIDR;
 import com.briup.woss.client.Gather;
 
@@ -18,10 +18,12 @@ import com.briup.woss.client.Gather;
  * 完成数据采集，封装成一个装有BIDR对象的集合
  */
 public class GatherImpl implements Gather {
+	private Map<String, BIDR> map = null;
+	static String filePath;
 
 	@Override
-	public void init(Properties arg0) {
-
+	public void init(Properties prop) {
+		filePath = prop.getProperty("src-file");
 	}
 
 	/*
@@ -30,29 +32,32 @@ public class GatherImpl implements Gather {
 	@Override
 	public Collection<BIDR> gather() throws Exception {
 		List<BIDR> bidrList = new ArrayList<BIDR>();
-		Map<String, BIDR> map = new HashMap<>();
+		map = new HashMap<>();
 		String[] split = null;
 
-		FileReader reader = new FileReader("src/com/briup/file/radwtmp");
-
+		FileReader reader = new FileReader(filePath);
+		@SuppressWarnings("resource")
 		BufferedReader br = new BufferedReader(reader);
 		String bs = null;
 		while ((bs = br.readLine()) != null) {
-			String[] sName=bs.split("#");
+			String[] sName = bs.split("#");
 			split = sName[1].split("[|]");
-			String loginName = split[0];// 登录名
-			String nasIp = split[1];// NAS_ip
-			String flag = split[2];// 七上八下
-			String time = split[3];// 时间
-			String IP = split[4];// IP
 			if (split.length == 5) {
+				String loginName = split[0];// 登录名
+				String nasIp = split[1];// NAS_ip
+				String flag = split[2];// 七上八下
+				String time = split[3];// 时间
+				String IP = split[4];// IP
+
 				if (flag.equals("7")) {
 					BIDR bidr = new BIDR();
-					Timestamp timeLogin = new Timestamp(Long.parseLong(time));
+					Timestamp timeLogin = new Timestamp(Long.parseLong(time
+							+ "000"));
 					bidr.setAAA_login_name(loginName);
 					bidr.setNAS_ip(nasIp);
 					bidr.setLogin_date(timeLogin);
 					bidr.setLogin_ip(IP);
+					// 只保存第一次登录的信息
 					if (!map.containsKey(IP)) {
 						map.put(IP, bidr);
 					}
@@ -60,18 +65,49 @@ public class GatherImpl implements Gather {
 					BIDR bidr = map.get(IP);
 
 					Timestamp login_date = bidr.getLogin_date();
-					//System.out.println(login_date);
-					Timestamp timeLogout = new Timestamp(Long.valueOf(time));
+					// System.out.println(login_date);
+					Timestamp timeLogout = new Timestamp(Long.valueOf(time
+							+ "000"));
 					// 获取上线时长
-					int time_deration = (int) (timeLogout.getTime() - login_date
-							.getTime());
+					int time_deration = ((int) (timeLogout.getTime() - login_date
+							.getTime())) / 1000;
 					bidr.setTime_deration(time_deration);
 					bidr.setLogout_date(timeLogout);
 					bidrList.add(bidr);
-					map.remove(bidr);
+					map.remove(IP);
 				}
 			}
 		}
+
+		new Configuration().getBackup().store("1", map, true);
+
+		// System.out.println(map.size());
+		/*
+		 * 存取备份文件
+		 */
+		/*
+		 * for(String key:map.keySet()){ System.out.println(key); } boolean
+		 * flag=true; BackUpImpl backUpImpl = new BackUpImpl();
+		 * backUpImpl.store("src\\com\\briup\\file\\backup.txt", map, flag);
+		 * Object load = backUpImpl.load("166.197.219.133", flag);
+		 * System.out.println(load.toString());
+		 */
 		return bidrList;
 	}
+
+	public Map<String, BIDR> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<String, BIDR> map) {
+		this.map = map;
+	}
+
+	/*
+	 * public static void main(String[] args) throws Exception { new
+	 * GatherImpl().gather();
+	 * 
+	 * }
+	 */
+
 }

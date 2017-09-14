@@ -1,0 +1,5 @@
+package com.briup.mybatis.mappers;
+
+public interface Mapper {
+
+}

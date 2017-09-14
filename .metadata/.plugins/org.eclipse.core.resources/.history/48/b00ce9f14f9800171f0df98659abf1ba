@@ -1,0 +1,8 @@
+package com.briup.mybatis.pojo;
+
+import com.briup.util.BIDR;
+
+public class BIDR1 extends BIDR {
+	
+	
+}
